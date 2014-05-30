@@ -1,0 +1,8 @@
+<h1>hey!</h1>
+
+<% @tweets.each do |t| %>
+	<%= t.to_json %>
+	<h5> <%= '' %> : <%= t.text %> </h5>
+	<br>
+<% end %>
+
