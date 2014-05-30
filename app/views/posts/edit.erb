@@ -1,0 +1,9 @@
+
+<h1>Edit fuck!</h1>
+
+<%= form_for @post do |f| %>
+	<%= f.text_field :title, placeholder: 'title' %>
+	<hr/>
+	<%= f.text_field :body, placeholder: 'body' %>
+	<%= f.submit %>
+<% end %>

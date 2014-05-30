@@ -1,8 +1,14 @@
-<h1>hey!</h1>
+<h1>Posts</h1>
 
-<% @tweets.each do |t| %>
-	<%= t.to_json %>
-	<h5> <%= '' %> : <%= t.text %> </h5>
-	<br>
+<% @posts.each do |p| %>
+
+	<h2> <%= p.title %></h2>
+	<p> <%= p.body %> </p>
+	<%= link_to 'Edit', edit_post_url(p) %>
+
+	<%= link_to 'x', post_url(p), method: :delete, data: { confirm:'OMG REALLY HOLY SHIT?' }%>
+
 <% end %>
+
+<%= link_to 'New Post!', new_post_url %>
 
