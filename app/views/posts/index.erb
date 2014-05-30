@@ -3,7 +3,7 @@
 <% @posts.each do |p| %>
 
 	<h2> <%= p.title %></h2>
-	<h4> <%= p.title %></h4>
+	<h4> <%= p.subtitle %></h4>
 	<p> <%= p.body %> </p>
 	<%= link_to 'Edit', edit_post_url(p) %>
 
