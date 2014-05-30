@@ -1,32 +1,46 @@
 class PostsController < ApplicationController
 
+
 	def index
 		@posts = Post.order(created_at: :desc).all
 	end
 
-  def show
-    @post = Post.find params[:id]
+  def new
+    @post = Post.new
   end
-
+  
   def create
-    post = Post.create params.require(:post).permit(:title, :body)
+    post = Post.create post_params
     redirect_to post_url(post)
   end
 
+  def show
+    load_post
+  end
+
   def destroy
-    Post.destroy params[:id]
+    load_post
+    @post.destroy
     redirect_to posts_url
   end
 
   def edit
-    @post = Post.find params[:id]
+    load_post
   end
 
   def update
-    @post = Post.find params[:id]
-    @post.update params.require(:post).permit(:title, :body)
+    load_post
+    @post.update post_params
     redirect_to posts_url
   end
 
-end
+  private
+    def post_params
+      params.require(:post).permit(:title, :body, :subtitle)
+    end
 
+    def load_post
+      @post = Post.find params[:id]    
+    end
+
+end
